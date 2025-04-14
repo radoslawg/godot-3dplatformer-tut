@@ -1,7 +1,47 @@
-[gd_scene format=3 uid="uid://ctee14qt4xrf5"]
+[gd_scene load_steps=4 format=3 uid="uid://ctee14qt4xrf5"]
+
+[ext_resource type="PackedScene" uid="uid://d3ci5pb2bveso" path="res://Scenes/block.tscn" id="1_vk57k"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_qqy1o"]
+size = Vector3(10, 0.5, 10)
+
+[sub_resource type="BoxMesh" id="BoxMesh_vk57k"]
+size = Vector3(10, 0.5, 10)
 
 [node name="Level1" type="Node3D"]
 
 [node name="Camera3D" type="Camera3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 0.866025, 0.5, 0, -0.5, 0.866025, 0, 2, 3)
+transform = Transform3D(1, 0, 0, 0, 0.866025, 0.5, 0, -0.5, 0.866025, 0, 5.93119, 9.55673)
 fov = 56.4972
+
+[node name="Floor" type="StaticBody3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.285683, 0)
+metadata/_edit_group_ = true
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Floor"]
+shape = SubResource("BoxShape3D_qqy1o")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Floor"]
+mesh = SubResource("BoxMesh_vk57k")
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
+transform = Transform3D(0.707107, -0.604687, 0.366543, 0, 0.51837, 0.855156, -0.707107, -0.604687, 0.366543, 5, 7.56039, 5.4778)
+shadow_enabled = true
+
+[node name="Block1" parent="." instance=ExtResource("1_vk57k")]
+transform = Transform3D(1, 0, 0, 0, 0.866025, -0.5, 0, 0.5, 0.866025, 0, 2, 0)
+
+[node name="Block2" parent="." instance=ExtResource("1_vk57k")]
+transform = Transform3D(1, 0, 0, 0, 0.866025, -0.5, 0, 0.5, 0.866025, -1.28767, 3.02201, 0)
+
+[node name="Block3" parent="." instance=ExtResource("1_vk57k")]
+transform = Transform3D(1, 0, 0, 0, 0.866025, -0.5, 0, 0.5, 0.866025, 0.642305, 3.37888, 0)
+
+[node name="Block4" parent="." instance=ExtResource("1_vk57k")]
+transform = Transform3D(0.85615, 0.447499, -0.258364, -0.516728, 0.741448, -0.428075, 0, 0.5, 0.866025, -0.555073, 4.81739, 0)
+
+[node name="Block5" parent="." instance=ExtResource("1_vk57k")]
+transform = Transform3D(0.552374, -0.721916, 0.416798, 0.833597, 0.47837, -0.276187, 0, 0.5, 0.866025, 1.81991, 3.37888, 0)
+
+[node name="Block6" parent="." instance=ExtResource("1_vk57k")]
+transform = Transform3D(-0.134895, -0.660746, 0.738389, 0.966033, 0.0780708, 0.246344, -0.220418, 0.746539, 0.627771, 1.25675, 5.44019, 1.41562)
